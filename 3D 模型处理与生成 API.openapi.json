@@ -1,0 +1,233 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "3D 模型处理与生成 API",
+    "description": "包含带纹理网格生成、多视角白模生成及模型减面处理接口 [cite: 1, 3, 8]",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/generate/textured_mesh": {
+      "post": {
+        "summary": "生成带纹理网格接口",
+        "deprecated": false,
+        "description": "上传网格文件与参考图片，生成并导出带纹理的 GLB 模型 [cite: 1, 2]",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mesh_file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "上传的网格文件 (支持 obj/glb 等) ",
+                    "example": "file://F:\\JavaWebPractice\\AIWebHY\\AIWebHY\\reduced_20000.glb"
+                  },
+                  "image_file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "上传的参考图片 ",
+                    "example": "file://D:\\WallPaper\\Test1\\cut_images_archive_y0SPjR55GDR\\cut_images_y0SPjR55GDR\\image_part_001.png"
+                  }
+                },
+                "required": [
+                  "mesh_file",
+                  "image_file"
+                ]
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "返回生成的带纹理 GLB 文件 [cite: 2]",
+            "content": {
+              "model/gltf-binary": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/generate/whitemesh": {
+      "post": {
+        "summary": "白模生成接口 (多视角)",
+        "deprecated": false,
+        "description": "通过前、后、左、右视角的图片生成白模网格 [cite: 3, 6]",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "front": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "前视角图片 [cite: 3]",
+                    "example": ""
+                  },
+                  "back": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "后视角图片 [cite: 3]",
+                    "example": ""
+                  },
+                  "left": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "左视角图片 [cite: 3]",
+                    "example": ""
+                  },
+                  "right": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "右视角图片 [cite: 3]",
+                    "example": ""
+                  },
+                  "steps": {
+                    "type": "integer",
+                    "default": 30,
+                    "description": "步数 [cite: 3]",
+                    "example": 30
+                  },
+                  "guidance_scale": {
+                    "type": "number",
+                    "format": "float",
+                    "default": 5,
+                    "description": "引导比例 [cite: 3]",
+                    "example": 5
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "default": 1234,
+                    "description": "随机种子 [cite: 3]",
+                    "example": 1234
+                  },
+                  "octree_resolution": {
+                    "type": "integer",
+                    "default": 256,
+                    "description": "八叉树分辨率 [cite: 3]",
+                    "example": 256
+                  },
+                  "remove_bg": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "是否移除背景 [cite: 3]",
+                    "example": "true"
+                  },
+                  "random_seed": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否随机化种子 [cite: 4]",
+                    "example": "false"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "返回生成的白模 GLB 文件，统计信息包含在 Header 中 [cite: 7]",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "X-Stats": {
+                "required": false,
+                "description": "统计信息 [cite: 7]",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/process/reduce_faces": {
+      "post": {
+        "summary": "减面接口",
+        "deprecated": false,
+        "description": "对上传的网格模型进行减面处理 [cite: 8, 9]",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mesh_file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "待减面的网格文件 ",
+                    "example": "file://F:\\JavaWebPractice\\AIWebHY\\AIWebHY\\white_mesh.glb"
+                  },
+                  "target_face_count": {
+                    "type": "integer",
+                    "default": 10000,
+                    "description": "目标面数 ",
+                    "example": 20000
+                  }
+                },
+                "required": [
+                  "mesh_file"
+                ]
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "返回减面后的 GLB 文件，处理耗时统计 [cite: 10]",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "X-Process-Time": {
+                "required": false,
+                "description": "处理耗时 [cite: 10]",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}
