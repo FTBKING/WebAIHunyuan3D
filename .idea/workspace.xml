@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa8a40d-737c-4a62-a7a1-8437e61ee722" name="更改" comment="123">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Config/CommonConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/MeshProcessingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/MeshProcessingClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/MeshProcessingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/impl/MeshProcServiceImpl1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/WhiteMeshRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/util/Model3DApiClientUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3D 模型处理与生成 API.openapi.json" beforeDir="false" afterPath="$PROJECT_DIR$/3D 模型处理与生成 API云平台端.openapi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/AliyunOSSProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/util/AliyunOSSOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/util/ProcessingFeignResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/MeshProcessingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/MeshProcessingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/impl/MeshProcServiceImpl1.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/impl/MeshProcServiceImpl1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,42 +68,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.DemoApplicationTests.getServiceUrl.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.DemoApplication (1).executor": "Run",
-    "Spring Boot.DemoApplication (2).executor": "Run",
-    "Spring Boot.DemoApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/JavaWebPractice/AIModelingProject/AIWebHY/demo/src/main/java/com/glaceon/pojo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.DemoApplicationTests.getServiceUrl.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.DemoApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DemoApplication (2).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/JavaWebPractice/AIModelingProject/AIWebHY/demo/src/main/java/com/glaceon/pojo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\JavaWebPractice\AIModelingProject\AIWebHY\demo\src\main\java\com\glaceon\pojo" />
       <recent name="F:\JavaWebPractice\AIModelingProject\AIWebHY\demo\src\main\java\com\glaceon\util" />
       <recent name="F:\JavaWebPractice\AIModelingProject\AIWebHY\demo\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.glaceon.util" />
+      <recent name="com.glaceon.pojo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -230,6 +233,11 @@
       <workItem from="1773904787273" duration="3697000" />
       <workItem from="1774082811769" duration="783000" />
       <workItem from="1774093434164" duration="2768000" />
+      <workItem from="1774144171423" duration="132000" />
+      <workItem from="1774164740157" duration="126000" />
+      <workItem from="1774164900607" duration="1099000" />
+      <workItem from="1774166043867" duration="448000" />
+      <workItem from="1774166730438" duration="2529000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <option name="closed" value="true" />
@@ -239,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773885773727</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="123">
+      <option name="closed" value="true" />
+      <created>1774144235549</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774144235549</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
