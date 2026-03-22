@@ -1,0 +1,110 @@
+    #生成带纹理网格接口
+    @app.post("/generate/textured_mesh")
+    async def api_generate_texture(
+    mesh_file: UploadFile = File(...), 
+    image_file: UploadFile = File(...),
+    ):
+    # 1. 加载上传的网格 (支持 obj/glb 等)
+       mesh_content = await mesh_file.read()
+       mesh = trimesh.load(io.BytesIO(mesh_content), file_type=mesh_file.filename.split('.')[-1])
+    
+    # 2. 加载上传的图片
+       image_content = await image_file.read()
+       reference_image = Image.open(io.BytesIO(image_content)).convert("RGB")
+    
+    # 3. 调用解耦后的逻辑
+       textured_mesh, _ = process_texture_generation(
+           mesh, 
+           reference_image
+       )
+    
+    # 4. 保存结果并返回
+       save_folder = gen_save_folder() # 使用你原有的目录管理函数
+       output_path = export_mesh(textured_mesh, save_folder, textured=True, type='glb')
+    
+       return FileResponse(output_path, media_type="model/gltf-binary", filename="textured_model.glb")
+    #shape_generate接口
+    @app.post("/generate/whitemesh")
+    async def api_generate_white_mesh_mv(
+        front: UploadFile = File(None),
+        back: UploadFile = File(None),
+        left: UploadFile = File(None),
+        right: UploadFile = File(None),
+        steps: int = Form(30),
+        guidance_scale: float = Form(5.0),
+        seed: int = Form(1234),
+        octree_resolution: int = Form(256),
+        remove_bg: bool = Form(True),
+        random_seed: bool = Form(False)
+    ):
+        # 1. 辅助函数：将上传的文件读取为 PIL Image
+        async def load_image(file: UploadFile):
+        if file is None: return None
+        content = await file.read()
+        return Image.open(io.BytesIO(content)).convert("RGBA")
+
+        # 2. 转换图片格式
+        img_front = await load_image(front)
+        img_back = await load_image(back)
+        img_left = await load_image(left)
+        img_right = await load_image(right)
+
+        if not any([img_front, img_back, img_left, img_right]):
+        raise HTTPException(status_code=400, detail="At least one view image is required.")
+
+        # 3. 调用修改后的逻辑函数
+        # 注意：确保全局变量 MV_MODE 在此时已根据模型路径正确设置
+        result = shape_generation(
+        mv_image_front=img_front,
+        mv_image_back=img_back,
+        mv_image_left=img_left,
+        mv_image_right=img_right,
+        steps=steps,
+        guidance_scale=guidance_scale,
+        seed=seed,
+        octree_resolution=octree_resolution,
+        check_box_rembg=remove_bg,
+        randomize_seed=random_seed
+        )
+
+        # 4. 返回生成的网格文件
+        # 如果需要同时返回 stats，可以考虑返回 JSON 并在其中包含文件下载 URL
+        return FileResponse(
+        path=result["mesh_path"], 
+        filename="white_mesh.glb",
+        headers={"X-Stats": str(result["stats"])} # 统计信息放在 Header 中或另建 JSON 接口
+        )
+    #减面接口
+    @app.post("/process/reduce_faces")
+    async def api_reduce_mesh_faces(
+        mesh_file: UploadFile = File(...),
+        target_face_count: int = Form(10000)
+    ):
+        # 1. 读取并加载上传的网格文件
+        try:
+            mesh_content = await mesh_file.read()
+            # 根据文件名后缀识别格式
+            file_ext = mesh_file.filename.split('.')[-1]
+            mesh = trimesh.load(io.BytesIO(mesh_content), file_type=file_ext)
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=f"Invalid mesh file: {str(e)}")
+
+        # 2. 调用解耦后的减面逻辑
+        reduced_mesh, stats = mesh_reduction_logic(mesh, target_face_count)
+
+        # 3. 导出结果
+        # 使用原代码中的 gen_save_folder 管理目录
+        save_folder = gen_save_folder() 
+        # 使用原代码中的 export_mesh 导出 (默认导出为白模 glb)
+        output_path = export_mesh(reduced_mesh, save_folder, textured=False, type='glb')
+
+        # 4. 返回文件
+        return FileResponse(
+            path=output_path,
+            filename=f"reduced_{target_face_count}.glb",
+            headers={
+                "X-Original-Faces": str(stats["original_face_count"]),
+                "X-Reduced-Faces": str(stats["reduced_face_count"]),
+                "X-Process-Time": f"{stats['time_taken']:.4f}s"
+            }
+        )  

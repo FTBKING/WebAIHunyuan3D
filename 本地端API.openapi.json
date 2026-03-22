@@ -1,0 +1,296 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "本地端API",
+    "description": "API for multiview white mesh generation, mesh reduction, and mesh texturing.",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/api/mv/white-mesh": {
+      "post": {
+        "summary": "Generate white mesh from multiview images",
+        "deprecated": false,
+        "description": "",
+        "operationId": "generateMvWhiteMesh",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mv_image_front": {
+                    "type": "string",
+                    "format": "binary",
+                    "example": "file://D:\\WallPaper\\Test1\\cut_images_archive_y0SPjR55GDR\\cut_images_y0SPjR55GDR\\image_part_001.png"
+                  },
+                  "mv_image_back": {
+                    "type": "string",
+                    "format": "binary",
+                    "example": "file://D:\\WallPaper\\Test1\\cut_images_archive_y0SPjR55GDR\\cut_images_y0SPjR55GDR\\image_part_002.png"
+                  },
+                  "mv_image_left": {
+                    "type": "string",
+                    "format": "binary",
+                    "example": "file://D:\\WallPaper\\Test1\\cut_images_archive_y0SPjR55GDR\\cut_images_y0SPjR55GDR\\image_part_003.png"
+                  },
+                  "mv_image_right": {
+                    "type": "string",
+                    "format": "binary",
+                    "example": "file://D:\\WallPaper\\Test1\\cut_images_archive_y0SPjR55GDR\\cut_images_y0SPjR55GDR\\image_part_004.png"
+                  },
+                  "steps": {
+                    "type": "integer",
+                    "default": 50,
+                    "example": 5
+                  },
+                  "guidance_scale": {
+                    "type": "number",
+                    "format": "float",
+                    "default": 7.5,
+                    "example": 5
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "default": 1234,
+                    "example": 1234
+                  },
+                  "octree_resolution": {
+                    "type": "integer",
+                    "default": 256,
+                    "example": 256
+                  },
+                  "check_box_rembg": {
+                    "type": "boolean",
+                    "default": false,
+                    "example": "true"
+                  },
+                  "num_chunks": {
+                    "type": "integer",
+                    "default": 200000,
+                    "example": 200000
+                  },
+                  "randomize_seed": {
+                    "type": "boolean",
+                    "default": false,
+                    "example": "false"
+                  }
+                }
+              },
+              "examples": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Generated white mesh file",
+            "content": {
+              "model/gltf-binary": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/mesh/reduce": {
+      "post": {
+        "summary": "Reduce mesh face count",
+        "deprecated": false,
+        "description": "",
+        "operationId": "reduceMesh",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model_file": {
+                    "type": "string",
+                    "format": "binary",
+                    "example": ""
+                  },
+                  "target_face_num": {
+                    "type": "integer",
+                    "default": 40000,
+                    "example": 40000
+                  }
+                },
+                "required": [
+                  "model_file"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Reduced mesh file",
+            "content": {
+              "model/gltf-binary": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/mesh/texture": {
+      "post": {
+        "summary": "Generate textured mesh from model and image",
+        "deprecated": false,
+        "description": "",
+        "operationId": "textureMesh",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model_file": {
+                    "type": "string",
+                    "format": "binary",
+                    "example": ""
+                  },
+                  "image_file": {
+                    "type": "string",
+                    "format": "binary",
+                    "example": ""
+                  },
+                  "check_box_rembg": {
+                    "type": "boolean",
+                    "default": false,
+                    "example": "false"
+                  }
+                },
+                "required": [
+                  "model_file",
+                  "image_file"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Textured mesh file",
+            "content": {
+              "model/gltf-binary": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "detail"
+        ]
+      }
+    },
+    "responses": {},
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}
