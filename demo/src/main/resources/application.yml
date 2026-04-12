@@ -14,3 +14,6 @@ aliyun:
     endpoint: https://oss-cn-beijing.aliyuncs.com
     bucketName: mybucket1312
     region: cn-beijing
+feign:
+  okhttp:
+    enabled: true # 开启OKHttp功能

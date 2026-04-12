@@ -3,7 +3,9 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-public class WhiteMeshRequest {
+public class WhiteMeshRequestDTO {
+    private MeshModelVersion modelVersion = MeshModelVersion.HY2;
+
     // 文件类型参数
     private MultipartFile mv_image_front;
     private MultipartFile mv_image_back;
@@ -16,6 +18,6 @@ public class WhiteMeshRequest {
     private Integer seed = 1234;
     private Integer octree_resolution = 256;
     private Boolean check_box_rembg = true;
-    private Integer num_chunks = 200000;
-    private Boolean randomize_seed = false;
+    private Integer num_chunks = 8000;
+    private Boolean randomize_seed = true;
 }
