@@ -5,18 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa8a40d-737c-4a62-a7a1-8437e61ee722" name="更改" comment="123">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/impl/HY2P0MeshProcService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/MeshReduceRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/MeshTextureRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/GenerationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/GenerationTaskResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/HealthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/ResultStatusResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/TaskStatusResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/MeshProcessingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/MeshProcessingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/MeshProcessingClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/HY2P0MeshProcessingClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/MeshProcessingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/MeshProcessingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/impl/MeshProcServiceImpl1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/WhiteMeshRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/WhiteMeshRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/MeshProcessingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/HY2MeshProcessingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/HY2P0MeshProcessingClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/HY2P0MeshProcessingClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/MeshProcessingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/impl/HY2P0MeshProcService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/MeshReduceRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy2/Hy2MeshReduceRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/MeshTextureRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy2/Hy2MeshTextureRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/WhiteMeshRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy2/Hy2WhiteMeshRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/util/Model3DApiClientUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +256,12 @@
       <workItem from="1775528991110" duration="1358000" />
       <workItem from="1775634446782" duration="3171000" />
       <workItem from="1775703860798" duration="1154000" />
-      <workItem from="1775979434889" duration="1848000" />
+      <workItem from="1775979434889" duration="1894000" />
+      <workItem from="1775991334119" duration="8000" />
+      <workItem from="1776238806055" duration="860000" />
+      <workItem from="1776239685434" duration="530000" />
+      <workItem from="1776240343061" duration="429000" />
+      <workItem from="1776326064245" duration="1703000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <option name="closed" value="true" />
@@ -278,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774169436113</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="123">
+      <option name="closed" value="true" />
+      <created>1775982912517</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775982912517</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

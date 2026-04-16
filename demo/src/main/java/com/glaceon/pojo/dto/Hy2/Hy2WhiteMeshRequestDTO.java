@@ -1,10 +1,9 @@
-package com.glaceon.pojo;
+package com.glaceon.pojo.dto.Hy2;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-public class WhiteMeshRequestDTO {
-    private MeshModelVersion modelVersion = MeshModelVersion.HY2;
+public class Hy2WhiteMeshRequestDTO {
 
     // 文件类型参数
     private MultipartFile mv_image_front;

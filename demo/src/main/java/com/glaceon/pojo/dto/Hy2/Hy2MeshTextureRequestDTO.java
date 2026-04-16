@@ -1,4 +1,4 @@
-package com.glaceon.pojo;
+package com.glaceon.pojo.dto.Hy2;
 import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 import javax.validation.constraints.NotNull;
@@ -7,8 +7,7 @@ import javax.validation.constraints.NotNull;
  * 用于接收3D模型贴图操作的请求参数
  */
 @Data
-public class MeshTextureRequestDTO {
-    private MeshModelVersion modelVersion = MeshModelVersion.HY2;
+public class Hy2MeshTextureRequestDTO {
 
     // 白模文件 (必填)
     @NotNull(message = "模型文件不能为空")
