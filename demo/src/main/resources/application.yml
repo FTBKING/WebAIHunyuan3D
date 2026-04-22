@@ -17,3 +17,6 @@ aliyun:
 feign:
   okhttp:
     enabled: true # 开启OKHttp功能
+  httpclient:
+    ok-http:
+      read-timeout: 180s

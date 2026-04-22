@@ -5,22 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfa8a40d-737c-4a62-a7a1-8437e61ee722" name="更改" comment="123">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/GenerationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/GenerationTaskResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/HealthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/ResultStatusResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/TaskStatusResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/HY2P1MeshProcessingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/HY2P1MeshProcessingClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/provider/HY2P1MeshService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/provider/impl/HY2P1MeshServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy2P1/Hy2P1GenDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/MeshProcessingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Controller/HY2MeshProcessingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/HY2P0MeshProcessingClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/FeighClient/HY2P0MeshProcessingClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/MeshProcessingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/impl/HY2P0MeshProcService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/MeshReduceRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy2/Hy2MeshReduceRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/MeshTextureRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy2/Hy2MeshTextureRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/WhiteMeshRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy2/Hy2WhiteMeshRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/util/Model3DApiClientUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/provider/impl/HY2MeshServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/Service/provider/impl/HY2MeshServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/GenerationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/GenerationTaskResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/HealthResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/ResultStatusResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/pojo/dto/Hy3/TaskStatusResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/util/ProcessingFeignResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/glaceon/util/ProcessingFeignResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +84,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.DemoApplication (1).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.DemoApplication (2).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Run&quot;,
@@ -261,7 +260,10 @@
       <workItem from="1776238806055" duration="860000" />
       <workItem from="1776239685434" duration="530000" />
       <workItem from="1776240343061" duration="429000" />
-      <workItem from="1776326064245" duration="1703000" />
+      <workItem from="1776326064245" duration="1748000" />
+      <workItem from="1776585081850" duration="2897000" />
+      <workItem from="1776595542779" duration="42000" />
+      <workItem from="1776843096811" duration="348000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <option name="closed" value="true" />
@@ -295,7 +297,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775982912517</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="123">
+      <option name="closed" value="true" />
+      <created>1776328239998</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1776328239998</updated>
+    </task>
+    <task id="LOCAL-00006" summary="123">
+      <option name="closed" value="true" />
+      <created>1776328272781</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1776328272781</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

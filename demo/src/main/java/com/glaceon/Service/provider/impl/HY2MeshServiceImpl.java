@@ -22,12 +22,11 @@ import java.util.UUID;
 public class HY2MeshServiceImpl implements HY2MeshService {
     private final HY2P0MeshProcessingClient hy2P0MeshProcessingClient;
     private final ProcessingFeignResponse processingFeignResponse;
-    private final AliyunOSSOperator aliyunOSSOperator;
 
     @Override
     public String generateMvWhiteMesh(Hy2WhiteMeshRequestDTO requestDTO) {
         try (Response response = hy2P0MeshProcessingClient.generateMvWhiteMesh(requestDTO)) {
-            return uploadFromResponse(response);
+            return processingFeignResponse.getFilename(response);
         } catch (Exception e) {
             log.error("HY2 白模生成失败", e);
             throw new RuntimeException("HY2 白模生成失败", e);
@@ -37,7 +36,7 @@ public class HY2MeshServiceImpl implements HY2MeshService {
     @Override
     public String reduceMesh(Hy2MeshReduceRequestDTO requestDTO) {
         try (Response response = hy2P0MeshProcessingClient.reduceMesh(requestDTO)) {
-            return uploadFromResponse(response);
+            return processingFeignResponse.getFilename(response);
         } catch (Exception e) {
             log.error("HY2 减面失败", e);
             throw new RuntimeException("HY2 减面失败", e);
@@ -47,24 +46,11 @@ public class HY2MeshServiceImpl implements HY2MeshService {
     @Override
     public String textureMesh(Hy2MeshTextureRequestDTO requestDTO) {
         try (Response response = hy2P0MeshProcessingClient.textureMesh(requestDTO)) {
-            return uploadFromResponse(response);
+            return processingFeignResponse.getFilename(response);
         } catch (Exception e) {
             log.error("HY2 贴图失败", e);
             throw new RuntimeException("HY2 贴图失败", e);
         }
     }
 
-    private String uploadFromResponse(Response response) throws Exception {
-        if (response.status() != 200 || response.body() == null) {
-            throw new RuntimeException("HY2 API调用失败，状态码：" + response.status());
-        }
-        try (InputStream inputStream = response.body().asInputStream()) {
-            byte[] fileData = StreamUtils.copyToByteArray(inputStream);
-            String filename = processingFeignResponse.getFilename(response);
-            if (filename == null || filename.trim().isEmpty()) {
-                filename = UUID.randomUUID() + ".glb";
-            }
-            return aliyunOSSOperator.upload(fileData, filename);
-        }
-    }
 }
